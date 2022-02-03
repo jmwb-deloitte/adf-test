@@ -1,0 +1,36 @@
+{
+	"name": "AzureSynapseAnalyticsDrugs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsdemopool",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DrugName",
+				"type": "varchar"
+			},
+			{
+				"name": "GenericName",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearDrugKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Drugs"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

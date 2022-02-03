@@ -1,0 +1,24 @@
+{
+	"name": "weathersink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "peterw1",
+				"folderPath": "weatheroutput",
+				"fileSystem": "weatherdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

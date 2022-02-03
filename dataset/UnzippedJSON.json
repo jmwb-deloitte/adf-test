@@ -1,0 +1,146 @@
+{
+	"name": "UnzippedJSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "source.json",
+				"fileSystem": "weatherdata"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"time_requested": {
+					"type": "string"
+				},
+				"last_updated": {
+					"type": "string"
+				},
+				"SiteRep": {
+					"type": "object",
+					"properties": {
+						"DV": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string"
+								},
+								"dataDate": {
+									"type": "string"
+								},
+								"Location": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"elevation": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"i": {
+												"type": "string"
+											},
+											"country": {
+												"type": "string"
+											},
+											"lon": {
+												"type": "string"
+											},
+											"Period": {
+												"type": "object",
+												"properties": {
+													"Rep": {
+														"type": "object",
+														"properties": {
+															"Pp": {
+																"type": "string"
+															},
+															"D": {
+																"type": "string"
+															},
+															"G": {
+																"type": "string"
+															},
+															"F": {
+																"type": "string"
+															},
+															"H": {
+																"type": "string"
+															},
+															"S": {
+																"type": "string"
+															},
+															"U": {
+																"type": "string"
+															},
+															"T": {
+																"type": "string"
+															},
+															"W": {
+																"type": "string"
+															},
+															"V": {
+																"type": "string"
+															},
+															"$": {
+																"type": "string"
+															}
+														}
+													},
+													"type": {
+														"type": "string"
+													},
+													"value": {
+														"type": "string"
+													}
+												}
+											},
+											"lat": {
+												"type": "string"
+											},
+											"continent": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						},
+						"Wx": {
+							"type": "object",
+							"properties": {
+								"Param": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"units": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"$": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

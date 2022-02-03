@@ -1,0 +1,110 @@
+{
+	"name": "details2013",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "PartD_Prescriber_PUF_NPI_Drug_13.txt",
+				"fileSystem": "cms-part-d-prescriber"
+			},
+			"columnDelimiter": "\t",
+			"encodingName": "WINDOWS-1252",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "npi",
+				"type": "String"
+			},
+			{
+				"name": "nppes_provider_last_org_name",
+				"type": "String"
+			},
+			{
+				"name": "nppes_provider_first_name",
+				"type": "String"
+			},
+			{
+				"name": "nppes_provider_city",
+				"type": "String"
+			},
+			{
+				"name": "nppes_provider_state",
+				"type": "String"
+			},
+			{
+				"name": "specialty_description",
+				"type": "String"
+			},
+			{
+				"name": "description_flag",
+				"type": "String"
+			},
+			{
+				"name": "drug_name",
+				"type": "String"
+			},
+			{
+				"name": "generic_name",
+				"type": "String"
+			},
+			{
+				"name": "bene_count",
+				"type": "String"
+			},
+			{
+				"name": "total_claim_count",
+				"type": "String"
+			},
+			{
+				"name": "total_30_day_fill_count",
+				"type": "String"
+			},
+			{
+				"name": "total_day_supply",
+				"type": "String"
+			},
+			{
+				"name": "total_drug_cost",
+				"type": "String"
+			},
+			{
+				"name": "bene_count_ge65",
+				"type": "String"
+			},
+			{
+				"name": "bene_count_ge65_suppress_flag",
+				"type": "String"
+			},
+			{
+				"name": "total_claim_count_ge65",
+				"type": "String"
+			},
+			{
+				"name": "ge65_suppress_flag",
+				"type": "String"
+			},
+			{
+				"name": "total_30_day_fill_count_ge65",
+				"type": "String"
+			},
+			{
+				"name": "total_day_supply_ge65",
+				"type": "String"
+			},
+			{
+				"name": "total_drug_cost_ge65",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

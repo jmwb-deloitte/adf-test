@@ -1,0 +1,21 @@
+{
+	"name": "WeatherOutputAvro",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Avro",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "output.avro",
+				"folderPath": "weatheroutput/df_test/avro",
+				"fileSystem": "weatherdata"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

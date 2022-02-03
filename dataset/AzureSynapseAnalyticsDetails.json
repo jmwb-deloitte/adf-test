@@ -1,0 +1,111 @@
+{
+	"name": "AzureSynapseAnalyticsDetails",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsdemopool",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "BeneficiaryCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalClaimCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Total30DayFillCount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "TotalDaySupply",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalDrugCost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "BeneCountGe65",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BeneCountGe65SuppressFlag",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalClaimCountGe65",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ge65SuppressFlag",
+				"type": "varchar"
+			},
+			{
+				"name": "Total30DayFillCountGe65",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "TotalDrugCostGe65",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "TotalDaySupplyGe65",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearNPI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearGeoKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearSpecialtyKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearDrugKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CostPerDay",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Details"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

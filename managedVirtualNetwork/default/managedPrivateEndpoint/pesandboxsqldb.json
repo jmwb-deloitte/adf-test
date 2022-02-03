@@ -1,0 +1,10 @@
+{
+	"name": "pesandboxsqldb",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/0216f964-958a-4d17-b381-741f53505a23/resourceGroups/RG1/providers/Microsoft.Sql/servers/acnimcopsql01",
+		"groupId": "sqlServer",
+		"fqdns": [
+			"acnimcopsql01.database.windows.net"
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "CMSZipped_Part15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "PartD_Prescriber_PUF_NPI_DRUG_15.zip",
+				"fileSystem": "cms-part-d-prescriber"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

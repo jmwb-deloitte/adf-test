@@ -1,0 +1,99 @@
+{
+	"name": "WeatherOutputParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "output.parquet",
+				"folderPath": "weatheroutput/df_test/parquet",
+				"fileSystem": "weatherdata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "elevation",
+				"type": "UTF8"
+			},
+			{
+				"name": "name",
+				"type": "UTF8"
+			},
+			{
+				"name": "i",
+				"type": "UTF8"
+			},
+			{
+				"name": "country",
+				"type": "UTF8"
+			},
+			{
+				"name": "lon",
+				"type": "UTF8"
+			},
+			{
+				"name": "lat",
+				"type": "UTF8"
+			},
+			{
+				"name": "continent",
+				"type": "UTF8"
+			},
+			{
+				"name": "time_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "time_value",
+				"type": "UTF8"
+			},
+			{
+				"name": "Precipitation Probability",
+				"type": "UTF8"
+			},
+			{
+				"name": "Wind Direction",
+				"type": "UTF8"
+			},
+			{
+				"name": "Wind Gust",
+				"type": "UTF8"
+			},
+			{
+				"name": "Feels Like Temperature",
+				"type": "UTF8"
+			},
+			{
+				"name": "Screen Relative Humidity",
+				"type": "UTF8"
+			},
+			{
+				"name": "Wind Speed",
+				"type": "UTF8"
+			},
+			{
+				"name": "Max UV Index",
+				"type": "UTF8"
+			},
+			{
+				"name": "Temperature",
+				"type": "UTF8"
+			},
+			{
+				"name": "Weather Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "Visibility",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

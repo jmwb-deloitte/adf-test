@@ -1,0 +1,149 @@
+{
+	"name": "Details",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "details2017",
+						"type": "DatasetReference"
+					},
+					"name": "details2017"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2016",
+						"type": "DatasetReference"
+					},
+					"name": "details2016"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2015",
+						"type": "DatasetReference"
+					},
+					"name": "details2015"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2014",
+						"type": "DatasetReference"
+					},
+					"name": "details2014"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2013",
+						"type": "DatasetReference"
+					},
+					"name": "details2013"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsGeo",
+						"type": "DatasetReference"
+					},
+					"name": "Geo"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsProviders",
+						"type": "DatasetReference"
+					},
+					"name": "Providers"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsSpecialty",
+						"type": "DatasetReference"
+					},
+					"name": "Specialty"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsDrugs",
+						"type": "DatasetReference"
+					},
+					"name": "Drugs"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2018",
+						"type": "DatasetReference"
+					},
+					"name": "details2018"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsDetails",
+						"type": "DatasetReference"
+					},
+					"name": "FinalDetails"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Year2017"
+				},
+				{
+					"name": "Year2016"
+				},
+				{
+					"name": "Year2015"
+				},
+				{
+					"name": "Year2014"
+				},
+				{
+					"name": "Year2013"
+				},
+				{
+					"name": "Union"
+				},
+				{
+					"name": "JoinProviders"
+				},
+				{
+					"name": "YearInt"
+				},
+				{
+					"name": "SelectProviders"
+				},
+				{
+					"name": "JoinGeo"
+				},
+				{
+					"name": "SelectGeo"
+				},
+				{
+					"name": "JoinSpecialty"
+				},
+				{
+					"name": "SelectSpecialty"
+				},
+				{
+					"name": "JoinDrugs"
+				},
+				{
+					"name": "SelectDrugs"
+				},
+				{
+					"name": "DataTypes"
+				},
+				{
+					"name": "AddCostPerDay"
+				},
+				{
+					"name": "Year2018"
+				},
+				{
+					"name": "ReplaceNulls"
+				}
+			],
+			"script": "source(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2017\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2016\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2015\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2014\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2013\nsource(output(\n\t\tCity as string,\n\t\tState as string,\n\t\tYear as integer,\n\t\tYearGeoKey as integer,\n\t\tCityState as string,\n\t\tStateKey as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: true) ~> Geo\nsource(output(\n\t\tnpi as integer,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tFullName as string,\n\t\tYear as integer,\n\t\tYearNPI as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: true) ~> Providers\nsource(output(\n\t\tSpecialtyDescriptionFlag as string,\n\t\tYear as integer,\n\t\tYearSpecialtyKey as integer,\n\t\tSpecialty as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: true) ~> Specialty\nsource(output(\n\t\tDrugName as string,\n\t\tGenericName as string,\n\t\tYear as integer,\n\t\tYearDrugKey as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: true) ~> Drugs\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2018\ndetails2017 derive(Year = \"2017\") ~> Year2017\ndetails2016 derive(Year = \"2016\") ~> Year2016\ndetails2015 derive(Year = \"2015\") ~> Year2015\ndetails2014 derive(Year = \"2014\") ~> Year2014\ndetails2013 derive(Year = \"2013\") ~> Year2013\nYear2017, Year2016, Year2015, Year2014, Year2013, Year2018 union(byName: true)~> Union\nYearInt, Providers join(YearInt@npi == Providers@npi\n\t&& nppes_provider_last_org_name == LastName\n\t&& nppes_provider_first_name == FirstName,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinProviders\nUnion derive(Year = toInteger(Year),\n\t\tnpi = toInteger(npi)) ~> YearInt\nJoinProviders select(mapColumn(\n\t\tnppes_provider_city,\n\t\tnppes_provider_state,\n\t\tspecialty_description,\n\t\tdescription_flag,\n\t\tdrug_name,\n\t\tgeneric_name,\n\t\tbene_count,\n\t\ttotal_claim_count,\n\t\ttotal_30_day_fill_count,\n\t\ttotal_day_supply,\n\t\ttotal_drug_cost,\n\t\tbene_count_ge65,\n\t\tbene_count_ge65_suppress_flag,\n\t\ttotal_claim_count_ge65,\n\t\tge65_suppress_flag,\n\t\ttotal_30_day_fill_count_ge65,\n\t\ttotal_day_supply_ge65,\n\t\ttotal_drug_cost_ge65,\n\t\tYear = YearInt@Year,\n\t\tYearNPI\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectProviders\nReplaceNulls, Geo join(nppes_provider_city == City\n\t&& nppes_provider_state == State,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinGeo\nJoinGeo select(mapColumn(\n\t\tspecialty_description,\n\t\tdescription_flag,\n\t\tdrug_name,\n\t\tgeneric_name,\n\t\tbene_count,\n\t\ttotal_claim_count,\n\t\ttotal_30_day_fill_count,\n\t\ttotal_day_supply,\n\t\ttotal_drug_cost,\n\t\tbene_count_ge65,\n\t\tbene_count_ge65_suppress_flag,\n\t\ttotal_claim_count_ge65,\n\t\tge65_suppress_flag,\n\t\ttotal_30_day_fill_count_ge65,\n\t\ttotal_day_supply_ge65,\n\t\ttotal_drug_cost_ge65,\n\t\tYear = SelectProviders@Year,\n\t\tYearNPI,\n\t\tYearGeoKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectGeo\nSelectGeo, Specialty join(specialty_description == Specialty\n\t&& description_flag == SpecialtyDescriptionFlag,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinSpecialty\nJoinSpecialty select(mapColumn(\n\t\tdrug_name,\n\t\tgeneric_name,\n\t\tbene_count,\n\t\ttotal_claim_count,\n\t\ttotal_30_day_fill_count,\n\t\ttotal_day_supply,\n\t\ttotal_drug_cost,\n\t\tbene_count_ge65,\n\t\tbene_count_ge65_suppress_flag,\n\t\ttotal_claim_count_ge65,\n\t\tge65_suppress_flag,\n\t\ttotal_30_day_fill_count_ge65,\n\t\ttotal_day_supply_ge65,\n\t\ttotal_drug_cost_ge65,\n\t\tYear = SelectGeo@Year,\n\t\tYearNPI,\n\t\tYearGeoKey,\n\t\tYearSpecialtyKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectSpecialty\nSelectSpecialty, Drugs join(drug_name == DrugName\n\t&& generic_name == GenericName,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinDrugs\nJoinDrugs select(mapColumn(\n\t\tbene_count,\n\t\ttotal_claim_count,\n\t\ttotal_30_day_fill_count,\n\t\ttotal_day_supply,\n\t\ttotal_drug_cost,\n\t\tbene_count_ge65,\n\t\tbene_count_ge65_suppress_flag,\n\t\ttotal_claim_count_ge65,\n\t\tge65_suppress_flag,\n\t\ttotal_30_day_fill_count_ge65,\n\t\ttotal_day_supply_ge65,\n\t\ttotal_drug_cost_ge65,\n\t\tYear = SelectSpecialty@Year,\n\t\tYearNPI,\n\t\tYearGeoKey,\n\t\tYearSpecialtyKey,\n\t\tYearDrugKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectDrugs\nSelectDrugs derive(bene_count = toInteger(bene_count),\n\t\ttotal_claim_count = toInteger(total_claim_count),\n\t\ttotal_30_day_fill_count = toDecimal(total_30_day_fill_count),\n\t\ttotal_day_supply = toInteger(total_day_supply),\n\t\ttotal_drug_cost = toDecimal(total_drug_cost),\n\t\tbene_count_ge65 = toInteger(bene_count_ge65),\n\t\ttotal_claim_count_ge65 = toInteger(total_claim_count_ge65),\n\t\ttotal_30_day_fill_count_ge65 = toDecimal(total_30_day_fill_count_ge65),\n\t\ttotal_drug_cost_ge65 = toDecimal(total_drug_cost_ge65),\n\t\ttotal_day_supply_ge65 = toInteger(total_day_supply_ge65)) ~> DataTypes\nDataTypes derive(CostPerDayRowLevel = divide(total_drug_cost,total_day_supply)) ~> AddCostPerDay\ndetails2018 derive(Year = \"2018\") ~> Year2018\nSelectProviders derive(nppes_provider_city = case(isNull(nppes_provider_city),\" \",nppes_provider_city)) ~> ReplaceNulls\nAddCostPerDay sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tBeneficiaryCount as integer,\n\t\tTotalClaimCount as integer,\n\t\tTotal30DayFillCount as decimal(10,2),\n\t\tTotalDaySupply as integer,\n\t\tTotalDrugCost as decimal(10,2),\n\t\tBeneCountGe65 as integer,\n\t\tBeneCountGe65SuppressFlag as string,\n\t\tTotalClaimCountGe65 as integer,\n\t\tGe65SuppressFlag as string,\n\t\tTotal30DayFillCountGe65 as decimal(10,2),\n\t\tTotalDrugCostGe65 as decimal(10,2),\n\t\tTotalDaySupplyGe65 as integer,\n\t\tYear as integer,\n\t\tYearNPI as integer,\n\t\tYearGeoKey as integer,\n\t\tYearSpecialtyKey as integer,\n\t\tYearDrugKey as integer,\n\t\tCostPerDay as decimal(10,2)\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tBeneficiaryCount = bene_count,\n\t\tTotalClaimCount = total_claim_count,\n\t\tTotal30DayFillCount = total_30_day_fill_count,\n\t\tTotalDaySupply = total_day_supply,\n\t\tTotalDrugCost = total_drug_cost,\n\t\tBeneCountGe65 = bene_count_ge65,\n\t\tBeneCountGe65SuppressFlag = bene_count_ge65_suppress_flag,\n\t\tTotalClaimCountGe65 = total_claim_count_ge65,\n\t\tGe65SuppressFlag = ge65_suppress_flag,\n\t\tTotal30DayFillCountGe65 = total_30_day_fill_count_ge65,\n\t\tTotalDrugCostGe65 = total_drug_cost_ge65,\n\t\tTotalDaySupplyGe65 = total_day_supply_ge65,\n\t\tYear,\n\t\tYearNPI,\n\t\tYearGeoKey,\n\t\tYearSpecialtyKey,\n\t\tYearDrugKey,\n\t\tCostPerDay = CostPerDayRowLevel\n\t)) ~> FinalDetails"
+		}
+	}
+}

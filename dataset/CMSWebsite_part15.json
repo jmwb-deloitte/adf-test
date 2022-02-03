@@ -1,0 +1,17 @@
+{
+	"name": "CMSWebsite_part15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PartD_Prescriber_PUF_NPI_DRUG_15",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

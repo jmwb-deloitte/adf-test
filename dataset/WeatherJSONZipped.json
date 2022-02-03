@@ -1,0 +1,24 @@
+{
+	"name": "WeatherJSONZipped",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "source.bz2",
+				"fileSystem": "weatherdata"
+			},
+			"compression": {
+				"type": "bzip2",
+				"level": "Optimal"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

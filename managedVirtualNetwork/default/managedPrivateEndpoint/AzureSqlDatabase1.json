@@ -1,0 +1,10 @@
+{
+	"name": "AzureSqlDatabase1",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/0216f964-958a-4d17-b381-741f53505a23/resourceGroups/RG1/providers/Microsoft.Sql/servers/srv-sandbox-testgeriatric",
+		"groupId": "sqlServer",
+		"fqdns": [
+			"srv-sandbox-testgeriatric.database.windows.net"
+		]
+	}
+}

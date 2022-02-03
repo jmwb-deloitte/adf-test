@@ -1,0 +1,45 @@
+{
+	"name": "AzureSynapseAnalyticsGeo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsdemopool",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "City",
+				"type": "varchar"
+			},
+			{
+				"name": "State",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearGeoKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CityState",
+				"type": "varchar"
+			},
+			{
+				"name": "StateKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Geography"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,36 @@
+{
+	"name": "AzureSynapseAnalyticsSpecialty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsdemopool",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "SpecialtyDescriptionFlag",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearSpecialtyKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Specialty",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Specialty"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

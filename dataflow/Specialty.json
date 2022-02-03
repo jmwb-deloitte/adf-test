@@ -1,0 +1,115 @@
+{
+	"name": "Specialty",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "details2017",
+						"type": "DatasetReference"
+					},
+					"name": "details2017"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2016",
+						"type": "DatasetReference"
+					},
+					"name": "details2016"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2015",
+						"type": "DatasetReference"
+					},
+					"name": "details2015"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2014",
+						"type": "DatasetReference"
+					},
+					"name": "details2014"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2013",
+						"type": "DatasetReference"
+					},
+					"name": "details2013"
+				},
+				{
+					"dataset": {
+						"referenceName": "details2018",
+						"type": "DatasetReference"
+					},
+					"name": "details2018"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsSpecialty",
+						"type": "DatasetReference"
+					},
+					"name": "Output"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Unique2017"
+				},
+				{
+					"name": "Unique2016"
+				},
+				{
+					"name": "Unique2015"
+				},
+				{
+					"name": "Unique2014"
+				},
+				{
+					"name": "Unique2013"
+				},
+				{
+					"name": "Year2017"
+				},
+				{
+					"name": "Year2016"
+				},
+				{
+					"name": "Year2015"
+				},
+				{
+					"name": "Year2014"
+				},
+				{
+					"name": "Year2013"
+				},
+				{
+					"name": "Union"
+				},
+				{
+					"name": "FinalColumns"
+				},
+				{
+					"name": "SurrogateKey"
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Unique2018"
+				},
+				{
+					"name": "Year2018"
+				},
+				{
+					"name": "DeDuplicate"
+				}
+			],
+			"script": "source(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2017\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2016\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2015\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2014\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2013\nsource(output(\n\t\tnpi as string,\n\t\tnppes_provider_last_org_name as string,\n\t\tnppes_provider_first_name as string,\n\t\tnppes_provider_city as string,\n\t\tnppes_provider_state as string,\n\t\tspecialty_description as string,\n\t\tdescription_flag as string,\n\t\tdrug_name as string,\n\t\tgeneric_name as string,\n\t\tbene_count as string,\n\t\ttotal_claim_count as string,\n\t\ttotal_30_day_fill_count as string,\n\t\ttotal_day_supply as string,\n\t\ttotal_drug_cost as string,\n\t\tbene_count_ge65 as string,\n\t\tbene_count_ge65_suppress_flag as string,\n\t\ttotal_claim_count_ge65 as string,\n\t\tge65_suppress_flag as string,\n\t\ttotal_30_day_fill_count_ge65 as string,\n\t\ttotal_day_supply_ge65 as string,\n\t\ttotal_drug_cost_ge65 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> details2018\ndetails2017 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2017\ndetails2016 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2016\ndetails2015 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2015\ndetails2014 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2014\ndetails2013 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2013\nUnique2017 derive(Year = 2017) ~> Year2017\nUnique2016 derive(Year = 2016) ~> Year2016\nUnique2015 derive(Year = 2015) ~> Year2015\nUnique2014 derive(Year = 2014) ~> Year2014\nUnique2013 derive(Year = 2013) ~> Year2013\nYear2017, Year2016, Year2015, Year2014, Year2013, Year2018 union(byName: true)~> Union\nDeDuplicate select(mapColumn(\n\t\tspecialty_description,\n\t\tdescription_flag,\n\t\tYear\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> FinalColumns\nDerivedColumn1 keyGenerate(output(YearSpecialtyKey as long),\n\tstartAt: 1L) ~> SurrogateKey\nFinalColumns derive(YearSpecialty = toString(Year) + specialty_description + \"|\" + description_flag) ~> DerivedColumn1\ndetails2018 aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tCount = first(npi)) ~> Unique2018\nUnique2018 derive(Year = 2018) ~> Year2018\nUnion aggregate(groupBy(specialty_description,\n\t\tdescription_flag),\n\tYear = max(Year)) ~> DeDuplicate\nSurrogateKey sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\tSpecialtyDescriptionFlag as string,\n\t\tYear as integer,\n\t\tYearSpecialtyKey as integer,\n\t\tSpecialty as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tSpecialty = specialty_description,\n\t\tSpecialtyDescriptionFlag = description_flag,\n\t\tYear,\n\t\tYearSpecialtyKey\n\t)) ~> Output"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "AzureSynapseAnalyticsStates",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsdemopool",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "State",
+				"type": "varchar"
+			},
+			{
+				"name": "StateKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "States"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

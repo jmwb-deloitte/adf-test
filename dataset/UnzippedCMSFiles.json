@@ -1,0 +1,18 @@
+{
+	"name": "UnzippedCMSFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "cms-part-d-prescriber"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

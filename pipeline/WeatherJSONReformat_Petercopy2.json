@@ -1,0 +1,94 @@
+{
+	"name": "WeatherJSONReformat_Petercopy2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Import JSON",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "WeatherJSONZipped",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "UnzippedJSON",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "FlattenJSON",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Import JSON",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jwillcoxbeney@deloitte.co.uk/Weather/Weather Flatten",
+					"baseParameters": {
+						"filepath": {
+							"value": "https://weatherarchiving.blob.core.windows.net/weatherdata/source.json",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"UUID": "0"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-02-01T16:31:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

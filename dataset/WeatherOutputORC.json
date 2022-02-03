@@ -1,0 +1,21 @@
+{
+	"name": "WeatherOutputORC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WeatherArchiving",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Orc",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "output.orc",
+				"folderPath": "weatheroutput/df_test/orc",
+				"fileSystem": "weatherdata"
+			},
+			"enablePhysicalSchema": true
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
