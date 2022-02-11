@@ -1,0 +1,10 @@
+{
+	"name": "JWB_PT_Weather_Keys_Link",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://JWB-PT-weather-keys.vault.azure.net/"
+		}
+	}
+}
