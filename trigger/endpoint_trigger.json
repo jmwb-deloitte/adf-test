@@ -1,0 +1,17 @@
+{
+	"name": "endpoint_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "CustomEventsTrigger",
+		"typeProperties": {
+			"subjectEndsWith": "",
+			"subjectBeginsWith": "start",
+			"scope": "/subscriptions/0216f964-958a-4d17-b381-741f53505a23/resourceGroups/RG1/providers/Microsoft.EventGrid/topics/jmwb-test-rest-endpoint",
+			"events": [
+				"test"
+			]
+		}
+	}
+}
