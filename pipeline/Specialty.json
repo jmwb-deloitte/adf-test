@@ -34,6 +34,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Demo"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-07-20T13:00:55Z"
 	},

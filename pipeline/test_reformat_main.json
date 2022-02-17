@@ -1,11 +1,18 @@
 {
-	"name": "test_reformat",
+	"name": "test_reformat_main",
 	"properties": {
 		"activities": [
 			{
-				"name": "Run Reformat",
+				"name": "Run",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Setup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -14,8 +21,158 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "Setup",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "test_reformat_setup",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Setup Fail",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Setup",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": {
+						"value": "@concat(\n    'SETUP FAILED: ',\n    activity('Setup').output\n    )",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Assert",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Run",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "test_reformat_assert",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Run Fail",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Run",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": {
+						"value": "@concat(\n    'RUN FAILED: ',\n    activity('Run').output\n    )",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Assert Fail",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Assert",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": {
+						"value": "@concat(\n    'ASSERT FAILED: ',\n    activity('Assert').output\n    )",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Cleanup",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Setup Fail",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Run Fail",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Assert Fail",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Assert",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "test_reformat_cleanup",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Cleanup Fail",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Cleanup",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": {
+						"value": "@concat(\n    'CLEANUP FAILED: ',\n    activity('Cleanup').output\n    )",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"folder": {
+			"name": "Test_Reformat"
+		},
 		"annotations": []
 	}
 }

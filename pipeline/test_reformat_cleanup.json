@@ -1,0 +1,9 @@
+{
+	"name": "test_reformat_cleanup",
+	"properties": {
+		"folder": {
+			"name": "Test_Reformat"
+		},
+		"annotations": []
+	}
+}

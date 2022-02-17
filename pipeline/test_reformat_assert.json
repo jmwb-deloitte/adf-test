@@ -1,0 +1,9 @@
+{
+	"name": "test_reformat_assert",
+	"properties": {
+		"folder": {
+			"name": "Test_Reformat"
+		},
+		"annotations": []
+	}
+}
