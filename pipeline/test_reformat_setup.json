@@ -1,6 +1,14 @@
 {
 	"name": "test_reformat_setup",
 	"properties": {
+		"variables": {
+			"folder": {
+				"type": "String"
+			},
+			"filename": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Test_Reformat"
 		},
