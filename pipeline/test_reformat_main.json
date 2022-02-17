@@ -38,7 +38,21 @@
 						"referenceName": "test_reformat_setup",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"source-folder": {
+							"value": "@pipeline().parameters.source-folder",
+							"type": "Expression"
+						},
+						"test-folder": {
+							"value": "@pipeline().parameters.test-folder",
+							"type": "Expression"
+						},
+						"filename": {
+							"value": "@pipeline().parameters.test-file",
+							"type": "Expression"
+						}
+					}
 				}
 			},
 			{
