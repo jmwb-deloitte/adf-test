@@ -99,6 +99,14 @@
 			"test-folder": {
 				"type": "string",
 				"defaultValue": "test"
+			},
+			"test-file": {
+				"type": "string",
+				"defaultValue": "source.json"
+			},
+			"source-folder": {
+				"type": "string",
+				"defaultValue": "test-source"
 			}
 		},
 		"folder": {

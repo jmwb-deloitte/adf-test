@@ -1,5 +1,5 @@
 {
-	"name": "Binary2",
+	"name": "ParameterisedDataset",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "WeatherArchiving",
