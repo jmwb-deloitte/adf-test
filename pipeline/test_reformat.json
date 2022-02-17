@@ -1,0 +1,21 @@
+{
+	"name": "test_reformat",
+	"properties": {
+		"activities": [
+			{
+				"name": "Run Reformat",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "WeatherJSONReformat_DF_Testable",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
