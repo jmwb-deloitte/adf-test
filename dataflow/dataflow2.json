@@ -9,8 +9,12 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1"
+			"transformations": [
+				{
+					"name": "Assert1"
+				}
+			],
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource1 assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
 		}
 	}
 }

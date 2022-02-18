@@ -38,7 +38,7 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"folder": {
+							"fileSystem": {
 								"value": "@pipeline().parameters.source-folder",
 								"type": "Expression"
 							},
@@ -54,7 +54,7 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"folder": {
+							"fileSystem": {
 								"value": "@pipeline().parameters.test-folder",
 								"type": "Expression"
 							},

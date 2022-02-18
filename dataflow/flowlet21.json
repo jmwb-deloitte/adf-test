@@ -1,0 +1,26 @@
+{
+	"name": "flowlet21",
+	"properties": {
+		"type": "Flowlet",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Assert1"
+				},
+				{
+					"name": "input1"
+				},
+				{
+					"name": "output1"
+				}
+			],
+			"scriptLines": [
+				"input(order: 0) ~> input1",
+				"input1 assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1",
+				"Assert1 output() ~> output1"
+			]
+		}
+	}
+}
