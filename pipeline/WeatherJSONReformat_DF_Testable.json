@@ -21,7 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": {
-								"value": "@pipeline().parameters.target_folder",
+								"value": "@concat(pipeline().parameters.path_to_target,'/',pipeline().parameters.target_folder)",
 								"type": "Expression"
 							},
 							"wildcardFileName": {
@@ -88,6 +88,59 @@
 					},
 					"traceLevel": "Fine"
 				}
+			},
+			{
+				"name": "if debug",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Import JSON",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@pipeline().parameters.debug",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Cache Intermediate Artifact",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "ParameterisedDataset",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
@@ -95,6 +148,13 @@
 				"type": "string"
 			},
 			"target_file": {
+				"type": "string"
+			},
+			"debug": {
+				"type": "bool",
+				"defaultValue": "False"
+			},
+			"path_to_target": {
 				"type": "string"
 			}
 		},
