@@ -16,13 +16,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "BinarySource",
+						"type": "JsonSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true
+							"recursive": true,
+							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "BinaryReadSettings"
+							"type": "JsonReadSettings"
 						}
 					},
 					"sink": {
@@ -35,22 +36,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ParameterisedDataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileSystem": {
-								"value": "@pipeline().parameters.path_to_source_folder",
-								"type": "Expression"
-							},
-							"filename": {
-								"value": "@pipeline().parameters.filename",
-								"type": "Expression"
-							},
-							"folder": {
-								"value": "@pipeline().parameters.source_folder",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "UnzippedJSON",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -105,7 +92,7 @@
 				}
 			},
 			{
-				"name": "Assert - Columns As Expected",
+				"name": "Assert - Equal to Example",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -139,6 +126,18 @@
 							"path-to-test-folder": {
 								"value": "'@{pipeline().parameters.path_to_test_folder}'",
 								"type": "Expression"
+							},
+							"path-to-example": {
+								"value": "'@{pipeline().parameters.path_to_example_folder}'",
+								"type": "Expression"
+							},
+							"example-folder": {
+								"value": "'@{pipeline().parameters.example_folder}'",
+								"type": "Expression"
+							},
+							"example-file": {
+								"value": "'@{pipeline().parameters.example_file}'",
+								"type": "Expression"
 							}
 						}
 					},
@@ -154,7 +153,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Assert - Columns As Expected",
+						"activity": "Assert - Equal to Example",
 						"dependencyConditions": [
 							"Succeeded",
 							"Failed"
@@ -209,16 +208,13 @@
 			"source_folder": {
 				"type": "string"
 			},
-			"test_folder": {
-				"type": "string"
-			},
 			"filename": {
 				"type": "string"
 			},
-			"path_to_test_folder": {
+			"example_folder": {
 				"type": "string"
 			},
-			"path_to_source_folder": {
+			"example_file": {
 				"type": "string"
 			}
 		},
