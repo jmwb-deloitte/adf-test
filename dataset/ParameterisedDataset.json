@@ -29,10 +29,7 @@
 					"value": "@dataset().folder",
 					"type": "Expression"
 				},
-				"fileSystem": {
-					"value": "@dataset().fileSystem",
-					"type": "Expression"
-				}
+				"fileSystem": "WeatherData"
 			}
 		}
 	}
