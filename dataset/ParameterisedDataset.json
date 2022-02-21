@@ -21,15 +21,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().filename",
-					"type": "Expression"
-				},
-				"folderPath": {
-					"value": "@dataset().folder",
-					"type": "Expression"
-				},
-				"fileSystem": "WeatherData"
+				"fileName": "weatherdata/test_source/source.json"
 			}
 		}
 	}
