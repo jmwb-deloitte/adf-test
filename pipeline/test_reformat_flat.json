@@ -78,7 +78,7 @@
 					"waitOnCompletion": true,
 					"parameters": {
 						"target_file": {
-							"value": "@pipeline().parameters.filename",
+							"value": "@pipeline().parameters.test_path",
 							"type": "Expression"
 						}
 					}
