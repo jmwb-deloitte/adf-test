@@ -10,15 +10,22 @@
 						"type": "LinkedServiceReference"
 					},
 					"name": "CreatedDataset"
+				},
+				{
+					"linkedService": {
+						"referenceName": "WeatherArchiving",
+						"type": "LinkedServiceReference"
+					},
+					"name": "ExampleDataset"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "Assert1"
+					"name": "EqualToExample"
 				}
 			],
-			"script": "parameters{\n\ttest-folder as string,\n\ttest-file as string,\n\tpath-to-test-folder as string\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tfolderPath: ($test-folder),\n\tfileName: ($test-file),\n\tdocumentForm: 'documentPerLine') ~> CreatedDataset\nCreatedDataset assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
+			"script": "parameters{\n\ttest-folder as string,\n\ttest-file as string,\n\tpath-to-test-folder as string,\n\tpath-to-example as string,\n\texample-folder as string,\n\texample-file as string\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tfileSystem: ($path-to-test-folder),\n\tfolderPath: ($test-folder),\n\tfileName: ($test-file),\n\tdocumentForm: 'documentPerLine') ~> CreatedDataset\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tfileSystem: ($path-to-example),\n\tfolderPath: ($example-folder),\n\tfileName: ($example-file),\n\tdocumentForm: 'documentPerLine') ~> ExampleDataset\nCreatedDataset, ExampleDataset assert(expectExists(ERROR_FUNCTION('') == ERROR_FUNCTION(''), false, 'EqualToExample', null, 'Generated file is identical to given example file'),\n\tabort: true) ~> EqualToExample"
 		}
 	}
 }
