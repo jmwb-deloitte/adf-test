@@ -159,18 +159,12 @@
 			}
 		],
 		"parameters": {
-			"target_folder": {
-				"type": "string"
-			},
 			"target_file": {
 				"type": "string"
 			},
 			"debug": {
 				"type": "bool",
 				"defaultValue": false
-			},
-			"path_to_target": {
-				"type": "string"
 			}
 		},
 		"folder": {
