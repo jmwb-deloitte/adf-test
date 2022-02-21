@@ -39,7 +39,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"path": {
-								"value": "'weatherdata/test_source/source.json'",
+								"value": "@pipeline().parameters.source_path",
 								"type": "Expression"
 							}
 						}
@@ -50,7 +50,10 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"path": "'weatherdata/test/source.json'\t"
+							"path": {
+								"value": "@pipeline().parameters.test_path",
+								"type": "Expression"
+							}
 						}
 					}
 				]
@@ -74,10 +77,6 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"target_folder": {
-							"value": "@pipeline().parameters.test_folder",
-							"type": "Expression"
-						},
 						"target_file": {
 							"value": "@pipeline().parameters.filename",
 							"type": "Expression"

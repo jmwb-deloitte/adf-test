@@ -20,10 +20,6 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@concat(pipeline().parameters.path_to_target,'/',pipeline().parameters.target_folder)",
-								"type": "Expression"
-							},
 							"wildcardFileName": {
 								"value": "@pipeline().parameters.target_file",
 								"type": "Expression"
@@ -47,7 +43,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "WeatherJSONZipped",
+						"referenceName": "UnzippedJSON",
 						"type": "DatasetReference"
 					}
 				],
