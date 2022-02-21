@@ -16,14 +16,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "JsonSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
+							"recursive": true
 						},
 						"formatSettings": {
-							"type": "JsonReadSettings"
+							"type": "BinaryReadSettings"
 						}
 					},
 					"sink": {
@@ -36,8 +35,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "UnzippedJSON",
-						"type": "DatasetReference"
+						"referenceName": "ParameterisedDataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"path": {
+								"value": "'weatherdata/test_source/source.json'",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -45,18 +50,7 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileSystem": {
-								"value": "@pipeline().parameters.path_to_test_folder",
-								"type": "Expression"
-							},
-							"filename": {
-								"value": "@pipeline().parameters.filename",
-								"type": "Expression"
-							},
-							"folder": {
-								"value": "@pipeline().parameters.test_folder",
-								"type": "Expression"
-							}
+							"path": "'weatherdata/test/source.json'\t"
 						}
 					}
 				]
@@ -183,17 +177,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ParameterisedDataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileSystem": {
-								"value": "@pipeline().parameters.path_to_test_folder",
-								"type": "Expression"
-							},
-							"folder": {
-								"value": "@pipeline().parameters.test_folder",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"enableLogging": true,
 					"storeSettings": {
@@ -205,16 +189,10 @@
 			}
 		],
 		"parameters": {
-			"source_folder": {
+			"source_path": {
 				"type": "string"
 			},
-			"filename": {
-				"type": "string"
-			},
-			"example_folder": {
-				"type": "string"
-			},
-			"example_file": {
+			"test_path": {
 				"type": "string"
 			}
 		},

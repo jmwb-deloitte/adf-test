@@ -142,7 +142,7 @@
 											"value": "@pipeline().parameters.path_to_target",
 											"type": "Expression"
 										},
-										"filename": {
+										"path": {
 											"value": "@pipeline().parameters.target_file",
 											"type": "Expression"
 										},
@@ -167,7 +167,7 @@
 			},
 			"debug": {
 				"type": "bool",
-				"defaultValue": "False"
+				"defaultValue": false
 			},
 			"path_to_target": {
 				"type": "string"
