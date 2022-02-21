@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Delete1",
+				"name": "Delete Test Folder",
 				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
@@ -19,7 +19,7 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileSystem": {
+							"folder": {
 								"value": "@pipeline().parameters.test-folder",
 								"type": "Expression"
 							}
