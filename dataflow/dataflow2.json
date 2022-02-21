@@ -18,7 +18,7 @@
 					"name": "Assert1"
 				}
 			],
-			"script": "parameters{\n\ttest-folder as string,\n\ttest-file as string\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tdocumentForm: 'documentPerLine') ~> CreatedDataset\nCreatedDataset assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
+			"script": "parameters{\n\ttest-folder as string,\n\ttest-file as string\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tfolderPath: ($test-folder),\n\tfileName: ($test-file),\n\tdocumentForm: 'documentPerLine') ~> CreatedDataset\nCreatedDataset assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
 		}
 	}
 }
