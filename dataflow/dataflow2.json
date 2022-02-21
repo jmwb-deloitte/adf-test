@@ -5,7 +5,11 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"linkedService": {
+						"referenceName": "WeatherArchiving",
+						"type": "LinkedServiceReference"
+					},
+					"name": "CreatedDataset"
 				}
 			],
 			"sinks": [],
@@ -14,7 +18,7 @@
 					"name": "Assert1"
 				}
 			],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource1 assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
+			"script": "parameters{\n\ttest-folder as string,\n\ttest-file as string\n}\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'json',\n\tdocumentForm: 'documentPerLine') ~> CreatedDataset\nCreatedDataset assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> Assert1"
 		}
 	}
 }
