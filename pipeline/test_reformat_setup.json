@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy To Test Folder",
+				"name": "Setup - Copy To Test Folder",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -38,12 +38,8 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileSystem": {
-								"value": "@pipeline().parameters.source-folder",
-								"type": "Expression"
-							},
-							"filename": {
-								"value": "@pipeline().parameters.filename",
+							"path": {
+								"value": "@pipeline().parameters.source-path",
 								"type": "Expression"
 							}
 						}
@@ -54,12 +50,8 @@
 						"referenceName": "ParameterisedDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileSystem": {
-								"value": "@pipeline().parameters.test-folder",
-								"type": "Expression"
-							},
-							"filename": {
-								"value": "@pipeline().parameters.filename",
+							"path": {
+								"value": "@pipeline().parameters.test-path",
 								"type": "Expression"
 							}
 						}
@@ -68,13 +60,10 @@
 			}
 		],
 		"parameters": {
-			"source-folder": {
+			"source-path": {
 				"type": "string"
 			},
-			"test-folder": {
-				"type": "string"
-			},
-			"filename": {
+			"test-path": {
 				"type": "string"
 			}
 		},
