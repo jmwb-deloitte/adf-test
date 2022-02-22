@@ -60,11 +60,11 @@
 			}
 		],
 		"parameters": {
-			"source-path": {
+			"source_path": {
 				"type": "string",
 				"defaultValue": "/weatherdata/test_source/source.json"
 			},
-			"test-path": {
+			"test_path": {
 				"type": "string",
 				"defaultValue": "/weatherdata/test/source.json"
 			}
