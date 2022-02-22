@@ -5,14 +5,21 @@
 			"referenceName": "WeatherArchiving",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"path": {
+				"type": "string",
+				"defaultValue": "/weatherdata/weatheroutput/df_test/json/output.json"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "output.json",
-				"folderPath": "weatheroutput/df_test/json",
-				"fileSystem": "weatherdata"
+				"fileName": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
