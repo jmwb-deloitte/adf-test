@@ -39,7 +39,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"path": {
-								"value": "@pipeline().parameters.source-path",
+								"value": "@pipeline().parameters.source_path",
 								"type": "Expression"
 							}
 						}
@@ -51,7 +51,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"path": {
-								"value": "@pipeline().parameters.test-path",
+								"value": "@pipeline().parameters.test_path",
 								"type": "Expression"
 							}
 						}
