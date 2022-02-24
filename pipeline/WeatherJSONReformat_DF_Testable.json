@@ -21,7 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFileName": {
-								"value": "@pipeline().parameters.target_file",
+								"value": "regexSplit(@pipeline().parameters.target_file, `\\/\\w+\\/(.+)`)[1]",
 								"type": "Expression"
 							},
 							"enablePartitionDiscovery": false
@@ -96,6 +96,12 @@
 										"type": "BinaryReadSettings"
 									}
 								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
@@ -104,7 +110,19 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"path": {
-											"value": "@pipeline().parameters.target_file",
+											"value": "regexSplit(pipeline().parameters.target_file, `\\/\\w+\\/(.+)`)[1]",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ParameterisedDataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"path": {
+											"value": "@pipeline().parameters.cache_folder",
 											"type": "Expression"
 										}
 									}
@@ -152,11 +170,12 @@
 		],
 		"parameters": {
 			"target_file": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "/weatherdata/test_source/source.json"
 			},
 			"debug": {
 				"type": "bool",
-				"defaultValue": false
+				"defaultValue": true
 			},
 			"cache_folder": {
 				"type": "string",
